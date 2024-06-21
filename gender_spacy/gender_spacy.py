@@ -153,6 +153,11 @@ class GenderParser:
         Args:
             jupyter (Bool): affects if the visualization loads in Jupyter or as HTML
         """
+            
+        if len(self.doc.spans["ruler"]) == 0:
+            print("No gendered pronouns found. Visualization can not be done on empty Span.")
+            return
+        
         if jupyter==True:
             displacy.render(self.doc, style="span", options=visualize_params, jupyter=True)
         else:
